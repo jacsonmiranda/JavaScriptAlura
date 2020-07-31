@@ -1,29 +1,12 @@
-export class ContaPoupanca{
+import {Conta} from "./Conta.js";
+
+export class ContaPoupanca extends Conta{
     constructor(saldoInicial, cliente, agencia){
-        this._saldo = saldoInicial;
-        this._cliente = cliente;
-        this._agencia = agencia;
+        super(saldoInicial, cliente, agencia);
     }
-
+    //sobreescrevendo o comportamento sacar
     sacar(valor){
-        if(this._saldo >= valor){
-            this._saldo -= valor;
-            return valor;
-        }
-    }
-
-    depositar(valor){
-        if(valor <= 0)
-        {
-            return;
-        } 
-        this._saldo += valor;    
-    }
-
-    trasferir(valor, conta){
-        // no javascrip é possivel alterar o objeto dentro de um método
-        conta.cidade = "São leo"; 
-        const valorSacado = this.sacar(valor);
-        conta.depositar(valorSacado);
+        const taxa = 1.02;
+        return this._sacar(valor, taxa);
     }
 }

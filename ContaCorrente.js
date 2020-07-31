@@ -1,20 +1,18 @@
-import {Cliente} from "./Cliente.js"
-export class ContaCorrente{
-    static numeroContas = 0;
+import { Conta } from "./Conta.js";
 
-    set cliente(novoValor){
-        if(novoValor instanceof Cliente){
-            this._cliente = novoValor
-        }
-    }
+export class ContaCorrente extends Conta {
+    static numeroDeContas = 0;
 
-    get cliente(){
-        return this.cliente;
-    }
     // #saldo =0 https://github.com/tc39/proposal-class-fields#private-fields
 
-    get saldo(){
-        return this._saldo;
+    constructor(agencia, cliente) {
+        super(0, agencia, cliente);
+        ContaCorrente.numeroDeContas += 1;
     }
 
+    //sobreescrevendo o comportamento sacar
+    sacar(valor){
+        let taxa = 1.1;
+        return this._sacar(valor, taxa);
+    }
 }
