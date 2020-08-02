@@ -4,6 +4,7 @@ export class ContaPoupanca extends Conta{
     constructor(saldoInicial, cliente, agencia){
         super(saldoInicial, cliente, agencia);
     }
+    
     //sobreescrevendo o comportamento sacar
     sacar(valor){
         const taxa = 1.02;

@@ -1,48 +1,19 @@
 import {Cliente} from "./Cliente.js"
-import {ContaCorrente} from "./ContaCorrente.js"
-import {ContaPoupanca} from "./ContaPoupanca.js"
-import { Conta } from "./Conta.js";
+import {Gerente} from "./Funcionario/Gerente.js"
+import {Diretor} from "./Funcionario/Diretor.js"
+import {SistemaAutenticacao} from "./SistemaAutenticacao.js"
 
-const cliente1 = new Cliente("Jacson", 23423423434);
+const diretor = new Diretor("Rodrigo", 10000, 2334234234);
+diretor.cadastrarSenha("123");
+const gerente = new Gerente("Ricardo", 5000, 9876786867);
+gerente.cadastrarSenha("1234");
+const cliente = new Cliente("Lais", 2000, 76786867);
+gerente.cadastrarSenha("12346");
 
-const cliente2 = new Cliente("Jalice", 98978779879);
+const estaLogado = SistemaAutenticacao.login(diretor, "123");
+const estaLogado2 = SistemaAutenticacao.login(gerente, "1234");
+const estaLogado3 = SistemaAutenticacao.login(cliente, "12346");
 
-//const contaJacson = new ContaCorrente(cliente1, 2002);
-//contaJacson.depositar(500);
-//contaJacson.sacar(50);
-
-//const contaJalice = new ContaPoupanca(0, cliente2,1001)
-const conta = new Conta(0, cliente1, 1001);
-//contaJalice.depositar(50);
-//contaJalice.sacar(30);
-
-//const conta = new Conta(0, cliente1, 1001);
-//const contaJalice = new ContaCorrente(102, cliente2);
-
-//const contaJalice = new ContaCorrente();
-//contaJalice.cliente = new Cliente();
-//contaJalice.cliente.nome = 0;
-//contaJalice.cliente.cpf = 979878797999;
-//contaJalice.agencia = 102;
-
-//null
-//const contaJoana = new ContaCorrente();
-//contaJoana.cliente = null;
-//contaJoana.cliente.nome = "Janice";
-//contaJoana.cliente.cpf = 979878797999;
-//contaJoana.agencia = 102;
-
-
-//undefined
-//const contaJulia = new ContaCorrente();
-//contaJulia.cliente = new Cliente();
-//contaJulia.cliente.nome = "Janice";
-//contaJulia.cliente.cpf = 979878797999;
-//contaJulia.agencia = 102;
-
-//contaJacson.trasferir(200, contaJalice);
-
-//console.log(contaJacson);
-//console.log(contaJalice);
-//console.log(contaJalice);
-console.log(conta);
+console.log(estaLogado);
+console.log(estaLogado2);
+console.log(estaLogado3);
